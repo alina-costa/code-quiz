@@ -20,7 +20,7 @@ h4 {
 h1 {
   font-size: 5rem;
   color: black;
-  margin-bottom: 5rem;
+  margin-bottom: 1rem;
 }
 
 h1 > span {
@@ -53,4 +53,36 @@ h3 {
 
 .container > * {
   width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* buttons */
+
+.btn {
+  font-size: 2rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.5rem solid black;
+  margin-bottom: 1rem;
+  background-color: whitesmoke;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(209, 164, 49);
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  background-color: none;
 }
