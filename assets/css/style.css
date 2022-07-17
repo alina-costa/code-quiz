@@ -86,3 +86,28 @@ h3 {
   cursor: not-allowed;
   background-color: none;
 }
+
+#question {
+  font-size: 4rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.buttonGrid {
+  display: grid;
+}
+
+.btn-correct {
+  background-color: green;
+}
+
+.btn-wrong {
+  background-color: red;
+}
+
+.hide {
+  display: none;
+}

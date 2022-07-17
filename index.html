@@ -9,16 +9,21 @@
   </head>
   <body>
     <div class="container">
-      <div id="home" class="flex-center flex-column">
-        <h1>So You Think You Know Javascript?</h1>
-        <br />
-        <h2>Click "Start" To Test Your Knowledge!</h2>
-        <a class="btn" href="/game.html">Start</a>
-        <a class="btn" id="button-scores" href="/highscores.html"
-          >View High Scores</a
-        >
+      <div id="home-page" class="flex-center flex-column">
+        <h1>Test Your Javascript Knowledge!</h1>
+        <a class="btn" id="button-start">Start</a>
+        <a class="btn" id="button-scores">View High Scores</a>
+      </div>
+      <div id="questionContainer" class="hide">
+        <div id="question">Question</div>
+        <div id="answerChoices" class="buttonGrid">
+          <button class="btn answer-button" data-num="1">A</button>
+          <button class="btn answer-button" data-num="2">B</button>
+          <button class="btn answer-button" data-num="3">C</button>
+          <button class="btn answer-button" data-num="4">D</button>
+        </div>
       </div>
     </div>
-    <script src="/assets/js/script.js"></script>
+    <script src="./assets/js/game.js"></script>
   </body>
 </html>
