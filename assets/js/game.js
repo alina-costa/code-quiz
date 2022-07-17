@@ -7,19 +7,22 @@ var answerButtonsEl = Array.from(
   document.getElementsByClassName("answer-button")
 );
 const rightAnswer = 10;
+var selectAnswer = false;
+var totalQuestions = 3;
+var questionCounter = 0;
 
 let questionArr = [
   {
     question: "What is 2+2?",
     choice1: "4",
-    choice2: "6",
+    choice2: "is this the real life? is this just fantasy?",
     choice3: "13",
     choice4: "24",
     answer: 1,
   },
   {
     question: "What is 3+3?",
-    choice1: "4",
+    choice1: "stacys mom has got it goin on",
     choice2: "6",
     choice3: "13",
     choice4: "24",
@@ -29,7 +32,7 @@ let questionArr = [
     question: "What is 12+12?",
     choice1: "4",
     choice2: "6",
-    choice3: "13",
+    choice3: "am i more than you bargained for yet",
     choice4: "24",
     answer: 4,
   },
@@ -38,7 +41,6 @@ let questionArr = [
 startButton.addEventListener("click", startQuiz);
 
 function startQuiz() {
-  window.alert("start quiz");
   homePage.classList.add("hide");
   questionContainerEl.classList.remove("hide");
   questionCounter = 0;
@@ -48,20 +50,33 @@ function startQuiz() {
 }
 
 function nextQuestion() {
+  if (questionCounter >= totalQuestions) {
+    return window.alert("quiz complete! your score is ___");
+  }
   questionCounter++;
   var questionNum = Math.floor(Math.random() * allQuestions.length);
   currentQuestion = allQuestions[questionNum];
   questionEl.innerText = currentQuestion.question;
-  console.log(nextQuestion);
 
   answerButtonsEl.forEach((choice) => {
-    // where does he get "choice" from??
     var number = choice.getAttribute("data-num");
     choice.innerText = currentQuestion["choice" + number];
   });
+
+  allQuestions.splice(questionNum, 1);
+
+  selectAnswer = true;
 }
 
-function answerSelect() {}
+answerButtonsEl.forEach((choice) => {
+  choice.addEventListener("click", (e) => {
+    if (!selectAnswer) return;
+    selectAnswer = false;
+    var answerChosen = e.target.getAttribute("data-num");
+    nextQuestion();
+    console.log(answerChosen);
+  });
+});
 
 // create a function for the timer
 // if statement answer !== correct answer, timer -10
