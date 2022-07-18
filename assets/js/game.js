@@ -75,10 +75,27 @@ answerButtonsEl.forEach((choice) => {
 
     selectAnswer = false;
     var answerChosen = e.target.dataset["num"];
-    nextQuestion();
-    console.log(answerChosen, currentQuestion.answer);
+
+    // correct/incorrect
+    if (answerChosen == currentQuestion.answer) {
+      var addClass = "correct";
+    } else if (answerChosen != currentQuestion.answer) {
+      addClass = "incorrect";
+    }
+
+    e.target.classList.add(addClass);
+
+    setTimeout(() => {
+      e.target.classList.remove(addClass);
+      nextQuestion();
+    }, 1000);
+
+    console.log(addClass);
   });
 });
 
 // create a function for the timer
 // if statement answer !== correct answer, timer -10
+
+// timer counts down from 60 seconds
+// save and load high scores
