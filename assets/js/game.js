@@ -6,6 +6,8 @@ var answerChoicesEl = document.getElementById("answerChoices");
 var answerButtonsEl = Array.from(
   document.getElementsByClassName("answer-button")
 );
+var allQuestions = [];
+var currentQuestion = {};
 const rightAnswer = 10;
 var selectAnswer = false;
 var totalQuestions = 3;
@@ -46,7 +48,6 @@ function startQuiz() {
   questionCounter = 0;
   allQuestions = [...questionArr];
   nextQuestion();
-  console.log(allQuestions);
 }
 
 function nextQuestion() {
@@ -59,7 +60,7 @@ function nextQuestion() {
   questionEl.innerText = currentQuestion.question;
 
   answerButtonsEl.forEach((choice) => {
-    var number = choice.getAttribute("data-num");
+    var number = choice.dataset["num"];
     choice.innerText = currentQuestion["choice" + number];
   });
 
@@ -71,10 +72,11 @@ function nextQuestion() {
 answerButtonsEl.forEach((choice) => {
   choice.addEventListener("click", (e) => {
     if (!selectAnswer) return;
+
     selectAnswer = false;
-    var answerChosen = e.target.getAttribute("data-num");
+    var answerChosen = e.target.dataset["num"];
     nextQuestion();
-    console.log(answerChosen);
+    console.log(answerChosen, currentQuestion.answer);
   });
 });
 
