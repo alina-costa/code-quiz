@@ -70,7 +70,6 @@ function startQuiz() {
   homePage.classList.add("hide");
   questionContainerEl.classList.remove("hide");
   questionCounter = 0;
-  //score = 0;
   allQuestions = [...questionArr];
   nextQuestion();
 }
@@ -82,7 +81,7 @@ function nextQuestion() {
     questionContainerEl.classList.add("hide");
     var getFinalScore = localStorage.getItem("finalScore", score);
     yourScoreEl.innerText = getFinalScore;
-    return; //console.log("quiz complete! your score is", score);
+    return;
   }
   questionCounter++;
   var questionNum = Math.floor(Math.random() * allQuestions.length);
@@ -116,7 +115,6 @@ answerButtonsEl.forEach((choice) => {
     if (addClass === "correct") {
       incrementScore(rightAnswer);
     }
-    console.log(score);
     e.target.classList.add(addClass);
 
     setTimeout(() => {
@@ -134,7 +132,6 @@ function saveHighscore(event) {
   event.preventDefault();
   var getFinalScore = localStorage.getItem("finalScore", score);
   saveInput.innerText = initials.value;
-  // yourScoreEl.innerText = getFinalScore;
   console.log(initials.value);
   console.log(getFinalScore);
 }
