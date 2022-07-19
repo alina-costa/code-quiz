@@ -6,36 +6,60 @@ var answerChoicesEl = document.getElementById("answerChoices");
 var answerButtonsEl = Array.from(
   document.getElementsByClassName("answer-button")
 );
+var score = 0;
 var allQuestions = [];
 var currentQuestion = {};
 const rightAnswer = 10;
 var selectAnswer = false;
-var totalQuestions = 3;
+var totalQuestions = 5;
 var questionCounter = 0;
+var resultsPageEl = document.getElementById("results-container");
+var finalScore = localStorage.getItem("finalScore");
+var saveScoreButton = document.getElementById("save-score-btn");
+var saveInput = document.getElementById("initials");
+var yourScoreEl = document.getElementById("your-score");
 
 let questionArr = [
   {
-    question: "What is 2+2?",
-    choice1: "4",
-    choice2: "is this the real life? is this just fantasy?",
-    choice3: "13",
-    choice4: "24",
+    question:
+      "Inside the HTML document, where do you place your JavaScript code?",
+    choice1: "Inside the <script> element",
+    choice2: "In the <footer> element",
+    choice3: "Inside the <link> element",
+    choice4: "Inside the <head> element",
     answer: 1,
   },
   {
-    question: "What is 3+3?",
-    choice1: "stacys mom has got it goin on",
-    choice2: "6",
-    choice3: "13",
-    choice4: "24",
+    question: "What operator is used to assign a value to a declared variable?",
+    choice1: "Question mark (?)",
+    choice2: "Double-equal (==)",
+    choice3: "Equal sign (=)",
+    choice4: "Colon (:)",
+    answer: 3,
+  },
+  {
+    question: "What are the six primitive data types in JavaScript?",
+    choice1: "sentence, int, truthy, bigInt, symbol, undefined",
+    choice2: "string, num, falsy, bigInt, symbol, undefined",
+    choice3: "sentence, float, data, bigInt, symbol, undefined",
+    choice4: "string, number, boolean, bigInt, symbol, undefined",
+    answer: 4,
+  },
+  {
+    question: "How do we declare a conditional statement in JavaScript?",
+    choice1: "while loop",
+    choice2: "if...else",
+    choice3: "difference...between",
+    choice4: "for loop",
     answer: 2,
   },
   {
-    question: "What is 12+12?",
-    choice1: "4",
-    choice2: "6",
-    choice3: "am i more than you bargained for yet",
-    choice4: "24",
+    question:
+      "From the given array which index is the letter 'b' on? ['a', 'b', 'c', 'd']",
+    choice1: "0",
+    choice2: "2",
+    choice3: "3",
+    choice4: "1",
     answer: 4,
   },
 ];
@@ -46,13 +70,19 @@ function startQuiz() {
   homePage.classList.add("hide");
   questionContainerEl.classList.remove("hide");
   questionCounter = 0;
+  //score = 0;
   allQuestions = [...questionArr];
   nextQuestion();
 }
 
 function nextQuestion() {
   if (questionCounter >= totalQuestions) {
-    return window.alert("quiz complete! your score is ___");
+    localStorage.setItem("finalScore", score);
+    resultsPageEl.classList.remove("hide");
+    questionContainerEl.classList.add("hide");
+    var getFinalScore = localStorage.getItem("finalScore", score);
+    yourScoreEl.innerText = getFinalScore;
+    return; //console.log("quiz complete! your score is", score);
   }
   questionCounter++;
   var questionNum = Math.floor(Math.random() * allQuestions.length);
@@ -83,16 +113,33 @@ answerButtonsEl.forEach((choice) => {
       addClass = "incorrect";
     }
 
+    if (addClass === "correct") {
+      incrementScore(rightAnswer);
+    }
+    console.log(score);
     e.target.classList.add(addClass);
 
     setTimeout(() => {
       e.target.classList.remove(addClass);
       nextQuestion();
     }, 1000);
-
-    console.log(addClass);
   });
 });
+
+function incrementScore(num) {
+  score += num;
+}
+
+function saveHighscore(event) {
+  event.preventDefault();
+  var getFinalScore = localStorage.getItem("finalScore", score);
+  saveInput.innerText = initials.value;
+  // yourScoreEl.innerText = getFinalScore;
+  console.log(initials.value);
+  console.log(getFinalScore);
+}
+
+saveScoreButton.addEventListener("click", saveHighscore);
 
 // create a function for the timer
 // if statement answer !== correct answer, timer -10

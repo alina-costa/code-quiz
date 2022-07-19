@@ -123,3 +123,21 @@ h3 {
 .incorrect {
   background-color: red;
 }
+
+#results-page {
+  width: 100vw;
+  height: 50vh;
+  font-size: 4rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+input {
+  padding: 1.5rem;
+  font-size: 2rem;
+}
