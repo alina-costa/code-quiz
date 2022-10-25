@@ -124,20 +124,27 @@ h3 {
   background-color: red;
 }
 
+/* #results-page { */
+/* width: 100vw;
+  height: 50vh; */
+/* font-size: 4rem;
+  font-weight: 500; */
+/* display: flex; */
+/* justify-content: center;
+  align-items: center; */
+/* margin-top: 6rem; */
+/* max-width: 80rem; */
+/* margin: 0 auto; */
+/* } */
+
 #results-page {
-  width: 100vw;
-  height: 50vh;
-  font-size: 4rem;
-  font-weight: 500;
-  display: flex;
+  display: inline-block;
+  position: absolute;
+  top: 100px;
   justify-content: center;
-  align-items: center;
-  margin-bottom: 6rem;
-  max-width: 80rem;
-  margin: 0 auto;
 }
 
-input {
+/* input {
   padding: 1.5rem;
   font-size: 2rem;
-}
+} */

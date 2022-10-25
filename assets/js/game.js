@@ -80,7 +80,7 @@ function nextQuestion() {
     resultsPageEl.classList.remove("hide");
     questionContainerEl.classList.add("hide");
     var getFinalScore = localStorage.getItem("finalScore", score);
-    yourScoreEl.innerText = getFinalScore;
+    yourScoreEl.textContent = "Your Score: " + getFinalScore;
     return;
   }
   questionCounter++;
